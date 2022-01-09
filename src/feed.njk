@@ -3,13 +3,13 @@
   "permalink": "feed.xml",
   "eleventyExcludeFromCollections": true,
   "metadata": {
-    "title": "My Blog about Boats",
-    "subtitle": "I am writing about my experiences as a naval navel-gazer.",
-    "url": "https://example.com/",
-    "feedUrl": "https://example.com/feed.xml",
+    "title": "average blog",
+    "subtitle": "Software development notes etc.",
+    "url": "http://avghmn.com/",
+    "feedUrl": "http://avghmn.com/feed.xml",
     "author": {
-      "name": "Boaty McBoatFace",
-      "email": "me@example.com"
+      "name": "averagehuman",
+      "email": "cyclebelfast@gmail.com"
     }
   }
 }
@@ -23,8 +23,8 @@
   <updated>{{ collections.post | getNewestCollectionItemDate | dateToRfc3339 }}</updated>
   <id>{{ metadata.url }}</id>
   <author>
-    <name>{{ metadata.author.name }}</name>
-    <email>{{ metadata.author.email }}</email>
+    <name>averagehuman</name>
+    <email>cyclebelfast@gmail.com</email>
   </author>
   {%- for post in collections.post %}
   {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}

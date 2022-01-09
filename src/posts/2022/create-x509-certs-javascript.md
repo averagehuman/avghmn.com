@@ -1,5 +1,6 @@
 ---
-title: Create X.509 certificates with javascript
+title: X.509 certificates with javascript
+permalink: posts/x509-certs-javascript/
 date: 2022-01-01
 tags: javascript
 ---
@@ -74,10 +75,6 @@ module.exports = mkKeyPair;
 
 ```
 
-## Example
-
-There is a command line usage example on [github](https://github.com/averagehuman/js-mk-cert/mkCert.js).
-
 ## CA Certificate
 
 The required root CA certificate can be generated with openssl commands such as the following:
@@ -87,7 +84,25 @@ $ openssl genrsa -out rootCA.pem.key 2048
 $ openssl req -x509 -sha256 -new -nodes -key rootCA.pem.key -days 3650 -out rootCA.pem.crt
 ```
 
+## Example
+
+There is a command line usage example on [github](https://github.com/averagehuman/js-mk-cert/blob/main/mkcert.js).
+
+```bash
+$ node mkcert.js 10.0.1.1
+Creating self-signed certificate (CN=10.0.1.1)...
+Wrote file: 10.0.1.1.crt
+Wrote file: 10.0.1.1.key
+
+```
+
+That script doesn't automatically restrict permission on the key file, so you should do that, eg.:
+
+```bash
+$ chmod 400 10.0.1.1.key
+```
+
 ## See Also
 
-* [mkcert](https://github.com/FiloSottile/mkcert) - a more complete solution that installs a CA cert to the system
-  trust store of the host OS
+* [github.com/FiloSottile/mkcert](https://github.com/FiloSottile/mkcert) - a more complete solution written in go that installs a CA cert to
+  the system trust store of the host OS
