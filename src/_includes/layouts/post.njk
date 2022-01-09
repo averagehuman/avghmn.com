@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+section: post
+---
+<div class="page-container">
+  <article>
+    <h1 class="is-size-4">{{ title }}</h1>
+    <p class="has-text-grey is-italic">
+      <small>
+        <time datetime="{{ date | machineDate }}">{{ date | readableDate }}</time>
+      </small>
+    </p>
+    <hr>
+
+    {{ layoutContent | safe }}
+
+  </article>
+
+</div>

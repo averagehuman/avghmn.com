@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+section: home
+---
+<div class="home-page">
+
+  {% set postslist = collections.post %}
+  {% set show_postslist_tags = false %}
+  {% set limit = 10 %}
+  {% include "components/postslist.njk" %}
+
+</div>

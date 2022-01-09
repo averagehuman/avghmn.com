@@ -1,0 +1,123 @@
+@charset "utf-8";
+
+// Customization
+
+// You can easily customize Bulma with your own variables.
+// Just uncomment the following block to see the result.
+
+/*
+// 1. Import the initial variables
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+// 2. Set your own initial variables
+// Update the blue shade, used for links
+$blue: #06bcef;
+// Add pink and its invert
+$pink: #ff8080;
+$pink-invert: #fff;
+// Update the sans-serif font family
+$family-sans-serif: "Helvetica", "Arial", sans-serif;
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$primary: $pink;
+$primary-invert: $pink-invert;
+// 4. Import the rest of Bulma
+*/
+
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+
+$widescreen: $desktop;
+$fullhd: $desktop;
+$navbar-background-color: transparent;
+$blue: dodgerblue;
+$link-hover: darkblue;
+$list-item-padding: 0.75em 0.75em 0.25em 0;
+$footer-background-color: $grey;
+$body-font-size: 1.1em;
+$pre-code-font-size: 0.75em;
+
+@import "../node_modules/bulma/sass/base/_all";
+@import "../node_modules/bulma/sass/utilities/_all";
+@import "../node_modules/bulma/sass/components/navbar";
+@import "../node_modules/bulma/sass/elements/button";
+@import "../node_modules/bulma/sass/elements/container";
+@import "../node_modules/bulma/sass/elements/icon";
+@import "../node_modules/bulma/sass/elements/image";
+@import "../node_modules/bulma/sass/helpers/_all";
+@import "../node_modules/bulma/sass/layout/_all";
+@import "./bulma-list";
+
+html, body {
+    background: rgba(230,230,220,10%);
+    background: $white;
+}
+body {
+    border-top: solid 6px $grey;
+    border-bottom: solid 6px $grey;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: stretch;
+}
+header {
+    margin-bottom: 2.5rem;
+}
+main {
+    padding: 0.2rem;
+    flex-grow: 1;
+}
+footer {
+    width: 100%;
+    margin-top: 6rem;
+}
+header, main, footer {
+    flex-shrink: 0;
+}
+.page {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+
+}
+.navbar-brand {
+
+    > .navbar-item {
+        padding-left: 0.45rem;
+        strong {
+            background: $black-bis;
+            padding: 3px 6px;
+            border: solid 1px $black-bis;
+            border-radius: 4px;
+        }
+    }
+}
+strong {
+}
+.list {
+    a {
+        color: $black-ter;
+    }
+    a:hover {
+        color: $blue;
+        text-decoration: underline;
+    }
+}
+pre, code {
+    font-size: 0.9em !important;
+    line-height: 1.3 !important;
+    border-radius: 4px;
+}
+pre, p {
+    margin-bottom: 1.25rem !important;
+}
+h2 {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 0.65em;
+    margin-top: 1.8em;
+
+    &:nth-of-type(1) {
+        margin-top: 0;
+    }
+}

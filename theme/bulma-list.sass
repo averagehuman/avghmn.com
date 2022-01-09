@@ -1,0 +1,109 @@
+/// MIT License
+///
+/// Copyright (c) 2021 Matt Fannin
+///
+/// Permission is hereby granted, free of charge, to any person obtaining a copy
+/// of this software and associated documentation files (the "Software"), to deal
+/// in the Software without restriction, including without limitation the rights
+/// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+/// copies of the Software, and to permit persons to whom the Software is
+/// furnished to do so, subject to the following conditions:
+///
+/// The above copyright notice and this permission notice shall be included in all
+/// copies or substantial portions of the Software.
+///
+/// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+/// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+/// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+/// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+/// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+/// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+/// SOFTWARE.
+///
+@import "../node_modules/bulma/sass/utilities/mixins"
+
+$list-color: $text !default
+$list-item-description-color: $text-light !default
+$list-item-divider-color: $border !default
+$list-item-hover-color: $scheme-main-bis !default
+$list-item-image-margin: 0.75em !default
+$list-item-padding: 0.75em !default
+$list-item-title-color: $text-strong !default
+$list-item-title-weight: $weight-semibold !default
+
+=has-mouse-pointer
+  @media (hover: hover)
+    @content
+
+.list
+  color: $list-color
+  display: flex
+  flex-direction: column
+  &.has-hidden-images .list-item-image
+    display: none
+  &.has-hoverable-list-items .list-item:hover
+    background-color: $list-item-hover-color
+  &.has-overflow-ellipsis .list-item-content
+    min-width: 0
+    & > *
+      overflow: hidden
+      text-overflow: ellipsis
+      white-space: nowrap
+  &:not(.has-visible-pointer-controls) .list-item-controls
+    +has-mouse-pointer
+      opacity: 0
+      visibility: hidden
+
+.list-item
+  align-items: center
+  display: flex
+  position: relative
+  transition: background-color ease-out 0.125s
+  &:hover .list-item-controls,
+  &:focus-within .list-item-controls
+    +has-mouse-pointer
+      opacity: initial
+      visibility: initial
+  &:not(.box)
+    padding: $list-item-padding
+  &:not(:last-child):not(.box)
+    border-bottom: 1px solid $list-item-divider-color
+  +mobile
+    .list:not(.has-overflow-ellipsis) &
+      flex-wrap: wrap
+
+.list-item-image
+  flex-shrink: 0
+  margin-right: $list-item-image-margin
+  +mobile
+    padding: 0.5rem 0
+
+.list-item-content
+  display: flex
+  flex-direction: column
+  flex-grow: 1
+  +mobile
+    padding: 0.5rem 0
+
+.list-item-title
+  color: $list-item-title-color
+  font-weight: $list-item-title-weight
+
+.list-item-description
+  color: $list-item-description-color
+
+.list-item-controls
+  flex-shrink: 0
+  transition: opacity ease-out 0.125s
+  +mobile
+    padding: 0.5rem 0
+    flex-wrap: wrap
+  +tablet
+    padding-left: $list-item-padding
+    .list:not(.has-visible-pointer-controls) &
+      align-items: center
+      display: flex
+      height: 100%
+      padding-right: $list-item-padding
+      position: absolute
+      right: 0

@@ -1,0 +1,69 @@
+<!doctype html>
+<html {% if section %} data-current="{{ section }}"{% endif %} lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <link rel="dns-prefetch" href="https://identity.netlify.com">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ renderData.title or title or metadata.title }}</title>
+        <meta name="description" content="{{ metaDescription or renderData.metaDescription or summary or metadata.description }}">
+        <link rel="stylesheet" href="/static/fontawesome/css/all.css">
+        <link rel="stylesheet" href="/static/css/prism.css">
+        <link rel="stylesheet" href="/static/css/averagehuman.css">
+        {% set js %}
+            {% include "assets/js/inline.js" %}
+        {% endset %}
+        <script>{{ js | jsmin | safe }}</script>
+        </head>
+
+	<body>
+        <header class="site-header">
+            <div class="container">
+                <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+                  <div class="navbar-brand">
+                    <a class="navbar-item is-size-4 has-text-white" href="/">
+                        <strong>average human</strong>
+                    </a>
+
+                  </div>
+
+                  <div id="navbarBasicExample" class="navbar-menu">
+
+                    <div class="navbar-end">
+                      <div class="navbar-item">
+                        <div class="buttons">
+                          <a class="button" href="/" title="Home">
+                              <span class="icon"><i class="fas fa-lg fa-home"></i></span>
+                          </a>
+                          <a class="button" href="/feed.xml" title="RSS Feed">
+                              <span class="icon"><i class="fas fa-lg fa-rss"></i></span>
+                          </a>
+                          <a class="button" href="https://github.com/averagehuman" title="Github">
+                              <span class="icon"><i class="fab fa-2x fa-github" style="font-size:1.75em"></i></span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <div class="container">
+            {{ layoutContent | safe }}
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="content container">
+                <p>
+                  <small>
+                    Copyright averagehuman.com 2022. All rights reserved.
+                  </small>
+                </p>
+            </div>
+        </footer>
+	</body>
+
+</html>

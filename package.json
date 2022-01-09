@@ -1,0 +1,46 @@
+{
+    "name": "avghmn-blog",
+    "version": "1.0.0",
+    "description": "Personal blog",
+    "scripts": {
+        "start": "npm-run-all -p dev:*",
+        "dev:gulp": "gulp&",
+        "dev:eleventy": "eleventy --serve",
+        "build": "NODE_ENV=production npm-run-all clean -p build:*",
+        "build:gulp": "gulp build-theme",
+        "build:eleventy": "eleventy",
+        "clean": "rimraf src/static/css/ public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/averagehuman/avghmn-blog"
+    },
+    "license": "All Rights Reserved",
+    "devDependencies": {
+        "@11ty/eleventy": "^0.11.1",
+        "@11ty/eleventy-plugin-rss": "^1.1.2",
+        "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.3",
+        "autoprefixer": "^10.4.1",
+        "bulma": "^0.9.3",
+        "cssnano": "^5.0.14",
+        "eleventy-plugin-heroicons": "^0.2.0",
+        "gulp": "^4.0.2",
+        "gulp-postcss": "^9.0.1",
+        "gulp-sass": "^5.0.0",
+        "gulp-sourcemaps": "^3.0.0",
+        "luxon": "^1.25.0",
+        "markdown-it": "^10.0.0",
+        "markdown-it-anchor": "^5.3.0",
+        "npm-run-all": "^4.1.5",
+        "postcss": "^8.4.5",
+        "rimraf": "^3.0.2",
+        "sass": "^1.45.2"
+    },
+    "dependencies": {
+        "@11ty/eleventy-navigation": "^0.1.6",
+        "@fortawesome/fontawesome-free": "^5.15.4",
+        "clean-css": "^4.2.1",
+        "html-minifier": "^4.0.0",
+        "uglify-es": "^3.3.9"
+    }
+}
