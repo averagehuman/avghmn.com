@@ -77,7 +77,7 @@ module.exports = mkKeyPair;
 
 ## CA Certificate
 
-The required root CA certificate can be generated with openssl commands such as the following:
+The required root CA certificate can be generated with openssl commands such as:
 
 ```bash
 $ openssl genrsa -out rootCA.pem.key 2048
@@ -96,7 +96,7 @@ Wrote file: 10.0.1.1.key
 
 ```
 
-That script doesn't automatically restrict permission on the key file, so you should do that, eg.:
+That script doesn't automatically restrict permissions on the key file, so you should do that, eg.:
 
 ```bash
 $ chmod 400 10.0.1.1.key
@@ -105,4 +105,4 @@ $ chmod 400 10.0.1.1.key
 ## See Also
 
 * [github.com/FiloSottile/mkcert](https://github.com/FiloSottile/mkcert) - a more complete solution written in go that installs a CA cert to
-  the system trust store of the host OS
+  the system trust store of the host OS.

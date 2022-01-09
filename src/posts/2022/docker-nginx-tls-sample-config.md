@@ -77,9 +77,9 @@ But you could also have 443 on both host and container so as not to require the 
 
 ## nginx.conf (sample)
 
-The following is a generic nginx configuration file based on
+This is a generic nginx configuration file based on
 [this template](https://github.com/nginx-proxy/nginx-proxy/blob/main/nginx.tmpl) - update to suit your needs.
-This should exist as `etc/nginx.conf` to match the docker compose config above.
+It should exist as `etc/nginx.conf` to match the docker compose config above.
 
 ```nginx
 
