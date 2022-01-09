@@ -13,9 +13,9 @@
   
   <entry>
     <title>X.509 certificates with javascript</title>
-    <link href="http://avghmn.com/posts/x509-certs-javascript/"/>
+    <link href="http://avghmn.com/posts/create-x509-certs-javascript/"/>
     <updated>2022-01-01T00:00:00Z</updated>
-    <id>http://avghmn.com/posts/x509-certs-javascript/</id>
+    <id>http://avghmn.com/posts/create-x509-certs-javascript/</id>
     <content type="html">&lt;p&gt;The following javascript module uses &lt;a href=&quot;https://github.com/digitalbazaar/forge&quot;&gt;node-forge&lt;/a&gt; to generate
 X.509 certificates for local development.&lt;/p&gt;
 &lt;h2 id=&quot;keypair.js&quot;&gt;keypair.js&lt;/h2&gt;

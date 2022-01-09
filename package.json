@@ -9,7 +9,7 @@
         "build": "NODE_ENV=production npm-run-all clean -p build:*",
         "build:gulp": "gulp build-theme",
         "build:eleventy": "eleventy",
-        "clean": "rimraf src/static/css/ public"
+        "clean": "rimraf public"
     },
     "repository": {
         "type": "git",

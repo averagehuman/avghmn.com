@@ -1,6 +1,6 @@
 ---
 title: X.509 certificates with javascript
-permalink: posts/x509-certs-javascript/
+permalink: posts/create-x509-certs-javascript/
 date: 2022-01-01
 tags: javascript
 ---
