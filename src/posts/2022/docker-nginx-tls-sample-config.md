@@ -77,54 +77,14 @@ But you could also have 443 on both host and container so as not to require the 
 
 ## nginx.conf (sample)
 
-This is a generic nginx configuration file based on
-[this template](https://github.com/nginx-proxy/nginx-proxy/blob/main/nginx.tmpl) - update to suit your needs.
-It should exist as `etc/nginx.conf` to match the docker compose config above.
+Next, an nginx config file should be created and saved to `etc/nginx.conf`. For example, copy and update
+[this template](https://github.com/nginx-proxy/nginx-proxy/blob/main/nginx.tmpl) to suit your needs.
+
+The server sections should be similar to the following. Note again that the redirect urls contain
+the explicity guest port 8443.
 
 ```nginx
 
-map $http_x_forwarded_proto $proxy_x_forwarded_proto {
-  default $http_x_forwarded_proto;
-  ''      $scheme;
-}
-map $http_x_forwarded_port $proxy_x_forwarded_port {
-  default $http_x_forwarded_port;
-  ''      $server_port;
-}
-map $http_upgrade $proxy_connection {
-  default upgrade;
-  '' close;
-}
-# Apply fix for very long server names
-server_names_hash_bucket_size 128;
-# Set appropriate X-Forwarded-Ssl header based on $proxy_x_forwarded_proto
-map $proxy_x_forwarded_proto $proxy_x_forwarded_ssl {
-  default off;
-  https on;
-}
-gzip_types text/plain text/css application/javascript application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
-log_format vhost '$host $remote_addr - $remote_user [$time_local] '
-                 '"$request" $status $body_bytes_sent '
-                 '"$http_referer" "$http_user_agent" '
-                 '"$upstream_addr"';
-access_log off;
-ssl_protocols TLSv1.2 TLSv1.3;
-ssl_ciphers 'ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384';
-ssl_prefer_server_ciphers off;
-# resolver 127.0.0.11;
-# HTTP 1.1 support
-proxy_http_version 1.1;
-proxy_buffering off;
-proxy_set_header Host $http_host;
-proxy_set_header Upgrade $http_upgrade;
-proxy_set_header Connection $proxy_connection;
-proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_set_header X-Forwarded-Proto $proxy_x_forwarded_proto;
-proxy_set_header X-Forwarded-Ssl $proxy_x_forwarded_ssl;
-proxy_set_header X-Forwarded-Port $proxy_x_forwarded_port;
-# Mitigate httpoxy attack (see README for details)
-proxy_set_header Proxy "";
 server {
         server_name _; # This is just an invalid value which will never trigger on a real hostname.
         server_tokens off;
